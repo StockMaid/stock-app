@@ -15,6 +15,10 @@
 	<description>stock-app built with Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<app.image.name>stock-app</app.image.name>
+		<app.image.tag/>
+		<app.env.var1/>
+		<app.env.var2/>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,4 +48,203 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>jib-push-to-dockerhub</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>2.5.2</version>
+						<configuration>
+							<from>
+								<image>openjdk:11</image>
+							</from>
+							<container>
+								<ports>
+									<port>8080</port>
+								</ports>
+								<format>OCI</format>
+								<environment>
+									<BESTBUY_API_KEY1>${app.env.var1}</BESTBUY_API_KEY1>
+									<BESTBUY_API_KEY2>${app.env.var2}</BESTBUY_API_KEY2>
+								</environment>
+							</container>
+						</configuration>
+						<executions>
+							<execution>
+								<id>push-custom-tag</id>
+								<phase>package</phase>
+								<configuration>
+									<to>
+										<image>docker.io/stockmaid/${app.image.name}:${app.image.tag}</image>
+									</to>
+								</configuration>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>push-latest-tag</id>
+								<phase>package</phase>
+								<configuration>
+									<to>
+										<image>docker.io/stockmaid/${app.image.name}:latest</image>
+									</to>
+								</configuration>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>jib-push-to-local</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>2.5.2</version>
+						<configuration>
+							<from>
+								<image>openjdk:11</image>
+							</from>
+							<container>
+								<ports>
+									<port>8080</port>
+								</ports>
+								<format>OCI</format>
+							</container>
+						</configuration>
+						<executions>
+							<execution>
+								<id>push-custom-tag</id>
+								<phase>package</phase>
+								<configuration>
+									<to>
+										<image>stockmaid/${app.image.name}:${app.image.tag}</image>
+									</to>
+								</configuration>
+								<goals>
+									<goal>dockerBuild</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>push-latest-tag</id>
+								<phase>package</phase>
+								<configuration>
+									<to>
+										<image>stockmaid/${app.image.name}:latest</image>
+									</to>
+								</configuration>
+								<goals>
+									<goal>dockerBuild</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>build-frontend</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>com.github.eirslett</groupId>
+						<artifactId>frontend-maven-plugin</artifactId>
+						<!-- Use the latest released version:
+                                  https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
+						<version>1.11.2</version>
+						<configuration>
+							<nodeVersion>v4.6.0</nodeVersion>
+							<workingDirectory>src/frontend</workingDirectory>
+						</configuration>
+						<executions>
+							<execution>
+								<id>install node and npm</id>
+								<goals>
+									<goal>install-node-and-npm</goal>
+								</goals>
+								<configuration>
+									<nodeVersion>v15.4.0</nodeVersion>
+									<npmVersion>7.3.0</npmVersion>
+								</configuration>
+							</execution>
+							<execution>
+								<id>npm install</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>install</arguments>
+								</configuration>
+							</execution>
+							<execution>
+								<id>npm run build</id>
+								<goals>
+									<goal>npm</goal>
+								</goals>
+								<configuration>
+									<arguments>run build</arguments>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-build-folder</id>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>src/frontend/build</directory>
+										</resource>
+									</resources>
+									<outputDirectory>${basedir}/target/classes/static</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>2.5.2</version>
+						<configuration>
+							<container>
+								<ports>
+									<port>8080</port>
+								</ports>
+								<format>OCI</format>
+							</container>
+						</configuration>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
