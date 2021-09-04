@@ -1,0 +1,151 @@
+.container {
+    padding: 24px;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.heading {
+    display: flex;
+    padding: 20px;
+}
+
+.heading button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.heading_flag {
+    flex: 1;
+    margin-right: 16px;
+}
+
+.heading_name,
+.heading_population,
+.heading_area,
+.heading_gini {
+    flex: 4;
+    color: var(--text-color-secondary);
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading_population {
+    padding-left: 60px;
+}
+
+.heading_name {
+    justify-content: flex-start;
+}
+
+.heading_arrow {
+    color: var(--primary-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 2px;
+}
+
+.row {
+    display: flex;
+    padding: 20px;
+
+    text-align: center;
+
+    background-color: var(--background-color-light);
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    box-shadow: var(--box-shadow);
+    font-weight: 500;
+
+    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+
+.row_in_stock {
+    background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(143, 255, 154, 0.52));
+}
+
+.row_out_of_stock {
+    background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 159, 159, 0.51));
+}
+
+.row:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.name {
+    flex: 4;
+    text-align: left;
+}
+
+.population {
+    flex: 4;
+}
+
+.area {
+    flex: 4;
+}
+
+.gini {
+    flex: 4;
+}
+
+.flag {
+    flex: 1;
+    margin-right: 16px;
+}
+
+.flag img {
+    border-radius: 2px;
+    max-height: 100px;
+}
+
+.in_stock {
+    color: #4da375;
+}
+
+.out_of_stock {
+    color: #a34d5d;
+}
+
+@media screen and (max-width: 720px) {
+    .area,
+    .heading_area {
+        display: none;
+    }
+
+    .gini,
+    .heading_gini {
+        display: none;
+    }
+
+    .flag,
+    .heading_flag {
+        display: none;
+    }
+
+    .heading_population {
+        padding-left: 0;
+    }
+
+    .row_in_stock {
+        background-image: linear-gradient(to right, rgba(143, 255, 154, 0.52), rgba(143, 255, 154, 0.52));
+    }
+
+    .row_out_of_stock {
+        background-image: linear-gradient(to right, rgba(255, 159, 159, 0.51), rgba(255, 159, 159, 0.51));
+    }
+}
