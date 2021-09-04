@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../Home.module.css";
+import { StockTable } from "../components/StockTable";
 
 export const DatePage = () => {
     const [stocks, setStocks] = useState([]);
@@ -35,7 +36,7 @@ export const DatePage = () => {
 
                 </div>
             </div>
-
+            <StockTable stock={filteredStock} />
         </div>
     );
 };

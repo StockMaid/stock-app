@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Stock } from "../components/Stock";
 
 export const SkuPage = () => {
     const [stock, setStock] = useState([]);
@@ -18,7 +19,7 @@ export const SkuPage = () => {
 
     return (
         <div>
-
+            <Stock stock={stock} />
         </div>
     );
 };

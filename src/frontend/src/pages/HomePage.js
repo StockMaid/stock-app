@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import styles from "../Home.module.css";
+import { StockTable } from "../components/StockTable";
 
 export const HomePage = () => {
     const [stocks, setStocks] = useState([]);
@@ -33,7 +34,7 @@ export const HomePage = () => {
 
                 </div>
             </div>
-
+            <StockTable stock={filteredStock} />
         </div>
     );
 };
