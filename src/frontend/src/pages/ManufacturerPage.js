@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../Home.module.css";
 import { StockTable } from "../components/StockTable";
+import SearchInput from "../components/SearchInput";
 
 export const ManufacturerPage = () => {
     const [stock, setStock] = useState([]);
@@ -33,7 +34,7 @@ export const ManufacturerPage = () => {
             <div className={styles.inputContainer}>
                 <div className={styles.counts}>Fetched {stock.length} items</div>
                 <div className={styles.input}>
-
+                    <SearchInput placeholder="Filter by Name" onChange={onInputChange} />
                 </div>
             </div>
             <StockTable stock={filteredStock} />
