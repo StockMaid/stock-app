@@ -1,0 +1,21 @@
+:root {
+    --primary: #5865F2;
+}
+
+.btn {
+    margin-right: 20px;
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+.btn:hover {
+    background: #fff;
+    color: #5865F2;
+    transition: 250ms;
+}
