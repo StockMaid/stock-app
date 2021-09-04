@@ -1,6 +1,9 @@
 package com.stockmaid.stockapp.model;
 
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvCustomBindByPosition;
+import com.stockmaid.stockapp.service.converters.DateConverter;
+import com.stockmaid.stockapp.service.converters.LocalConverter;
 
 import java.time.LocalDate;
 
@@ -18,13 +21,13 @@ public class Stock {
     private String addToCartUrl;
     @CsvBindByPosition(position = 54)
     private boolean inStoreAvailability;
-    @CsvBindByPosition(position = 56)
+    @CsvCustomBindByPosition(position = 56, converter = DateConverter.class)
     private LocalDate inStoreAvailabilityUpdateDate;
     @CsvBindByPosition(position = 58)
     private boolean onlineAvailability;
-    @CsvBindByPosition(position = 60)
+    @CsvCustomBindByPosition(position = 60, converter = DateConverter.class)
     private LocalDate onlineAvailabilityUpdateDate;
-    @CsvBindByPosition(position = 61)
+    @CsvCustomBindByPosition(position = 61, converter = LocalConverter.class)
     private LocalDate releaseDate;
     @CsvBindByPosition(position = 83)
     private String manufacturer;
