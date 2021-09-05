@@ -79,14 +79,21 @@ export const StockTable = ({ stock }) => {
                     {value === "regularPrice" && <SortArrow direction={direction} />}
                 </button>
 
-                {/* TODO: filter based on boolean values */}
+                <button
+                    className={styles.heading_area}
+                    onClick={() => setValueAndDirection("inStoreAvailability")}
+                >
 
-                <button className={styles.heading_area}>
                     <div>In store</div>
+                    {value === "inStoreAvailability" && <SortArrow direction={direction} />}
                 </button>
 
-                <button className={styles.heading_gini}>
+                <button
+                    className={styles.heading_gini}
+                    onClick={() => setValueAndDirection("onlineAvailability")}
+                >
                     <div>Online</div>
+                    {value === "onlineAvailability" && <SortArrow direction={direction} />}
                 </button>
             </div>
             {orderedStock.map((stock) => (
