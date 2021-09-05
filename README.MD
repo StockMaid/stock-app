@@ -16,4 +16,9 @@ The frontend utilizes React, we use the useState and useEffect hooks to fetch da
 
 ### Screenshots
 
-TODO: add screenshots for desktop/mobile
+<p align="center">
+  <img width="600px" src="https://user-images.githubusercontent.com/46653995/132112387-76eed3ad-2c24-4ea5-a7cd-712ee3eb143c.gif" alt="Material Bread logo">
+</p>
+<p align="center">
+  <img width="600px" src="https://user-images.githubusercontent.com/46653995/132112400-dad8bc0f-ced7-45cb-9c24-3207965f7f3f.gif" alt="Material Bread logo">
+</p>
