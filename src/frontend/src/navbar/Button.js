@@ -1,11 +1,14 @@
 import React from 'react';
 import './Button.css';
-import { Link } from 'react-router-dom';
 
 export function Button() {
     return (
-        <Link to='/'>
+        <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://discord.gg/M8DmdHtD4W"
+        >
             <button className='btn'>Discord</button>
-        </Link>
+        </a>
     );
 }

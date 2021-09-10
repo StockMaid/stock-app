@@ -66,13 +66,14 @@ function Navbar() {
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            to='/'
+                        <a
                             className='nav-links-mobile'
-                            onClick={closeMobileMenu}
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://discord.gg/M8DmdHtD4W"
                         >
                             Join the Discord
-                        </Link>
+                        </a>
                     </li>
                 </ul>
                 <Button />
