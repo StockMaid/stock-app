@@ -169,4 +169,26 @@ public class Stock {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "sku=" + sku +
+                ", name='" + name + '\'' +
+                ", regularPrice=" + regularPrice +
+                ", url='" + url + '\'' +
+                ", addToCartUrl='" + addToCartUrl + '\'' +
+                ", inStoreAvailability=" + inStoreAvailability +
+                ", inStoreAvailabilityUpdateDate=" + inStoreAvailabilityUpdateDate +
+                ", onlineAvailability=" + onlineAvailability +
+                ", onlineAvailabilityUpdateDate=" + onlineAvailabilityUpdateDate +
+                ", releaseDate=" + releaseDate +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", image='" + image + '\'' +
+                ", thumbnailImage='" + thumbnailImage + '\'' +
+                ", alternateViewsImage='" + alternateViewsImage + '\'' +
+                ", condition='" + condition + '\'' +
+                ", longDescription='" + longDescription + '\'' +
+                '}';
+    }
 }
