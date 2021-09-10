@@ -69,6 +69,7 @@ function Navbar() {
                         <a
                             className='nav-links-mobile'
                             target="_blank"
+                            rel="noreferrer"
                             href="https://discord.gg/M8DmdHtD4W"
                         >
                             Join the Discord
