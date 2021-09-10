@@ -2,7 +2,7 @@
 
 [![CICD](https://github.com/StockMaid/stock-app/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/StockMaid/stock-app/actions/workflows/deploy.yml)
 
-[StockMaid](https://stockmaid.com/) provides alerts sent directly to your phone number or email address when a product is in stock.
+[StockMaid](https://stockmaid.com/) tracks graphics cards from leading retailers and provides alerts when they are in stock.
 
 # Technologies
 
