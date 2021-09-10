@@ -16,6 +16,7 @@ env:
   EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/dockerrun.aws.json
   BESTBUY_API_KEY1: ${{ secrets.BESTBUY_API_KEY1 }}
   BESTBUY_API_KEY2: ${{ secrets.BESTBUY_API_KEY2 }}
+  WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
 
 jobs:
   deploy:
@@ -46,6 +47,7 @@ jobs:
               -Dapp.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} \
               -Dapp.env.var1=${{ env.BESTBUY_API_KEY1 }} \
               -Dapp.env.var2=${{ env.BESTBUY_API_KEY2 }} \
+              -Dapp.env.var3=${{ env.WEBHOOK_TOKEN }} \
 
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@ebe3476a4ce991d54336935e75e78dd9d86f9408

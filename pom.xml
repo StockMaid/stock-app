@@ -19,6 +19,7 @@
 		<app.image.tag/>
 		<app.env.var1/>
 		<app.env.var2/>
+		<app.env.var3/>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -37,7 +38,20 @@
 			<artifactId>opencsv</artifactId>
 			<version>5.5.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/club.minnced/discord-webhooks -->
+		<dependency>
+			<groupId>club.minnced</groupId>
+			<artifactId>discord-webhooks</artifactId>
+			<version>0.5.8</version>
+		</dependency>
 	</dependencies>
+	<repositories>
+		<repository>
+			<name>jcenter</name>
+			<id>bintray-jcenter</id>
+			<url>https://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
@@ -72,6 +86,7 @@
 								<environment>
 									<BESTBUY_API_KEY1>${app.env.var1}</BESTBUY_API_KEY1>
 									<BESTBUY_API_KEY2>${app.env.var2}</BESTBUY_API_KEY2>
+									<WEBHOOK_TOKEN>${app.env.var3}</WEBHOOK_TOKEN>
 								</environment>
 							</container>
 						</configuration>
